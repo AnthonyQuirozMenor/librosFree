@@ -1,0 +1,22 @@
+{
+  "name": "librosfree",
+  "version": "1.0.0",
+  "description": "LibrosFree – Biblioteca Digital Gratuita para fomentar la lectura y promover la literatura peruana y universal.",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "dev": "npx serve . -l 3000",
+    "test": "powershell -ExecutionPolicy Bypass -File ./src/utils/verify.ps1"
+  },
+  "keywords": [
+    "biblioteca-digital",
+    "literatura-peruana",
+    "lectura-gratuita",
+    "librosfree",
+    "educacion",
+    "cultura"
+  ],
+  "author": "Equipo LibrosFree",
+  "license": "MIT"
+}

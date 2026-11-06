@@ -1,0 +1,15 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="120" fill="url(#abg)"/>
+  <circle cx="120" cy="120" r="108" fill="none" stroke="#D6A85F" stroke-width="1.5" stroke-opacity="0.6"/>
+  <circle cx="120" cy="92" r="34" fill="#FAF7F0" fill-opacity="0.12" stroke="#D6A85F" stroke-width="1.5"/>
+  <path d="M64 192 C68 152, 172 152, 176 192" fill="#FAF7F0" fill-opacity="0.12" stroke="#D6A85F" stroke-width="1.5"/>
+  <text x="120" y="102" text-anchor="middle" fill="#FAF7F0" font-family="Georgia, serif" font-size="25" font-weight="bold">MVL</text>
+  <rect x="38" y="170" width="164" height="28" rx="14" fill="#172554" stroke="#D6A85F" stroke-width="1"/>
+  <text x="120" y="188" text-anchor="middle" fill="#D6A85F" font-family="system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="1">PERU Â· 1936 - 2025</text>
+</svg>

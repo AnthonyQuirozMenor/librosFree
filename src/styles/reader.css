@@ -1,0 +1,282 @@
+/* Lector Digital Integrado */
+.reader-wrapper {
+  min-height: calc(100vh - var(--header-height));
+  padding: 1.2rem 0 2.5rem;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.reader-wrapper.theme-light {
+  background-color: #F1F3F5;
+  color: #1e293b;
+}
+
+.reader-wrapper.theme-sepia {
+  background-color: #FAF7F0;
+  color: #292524;
+}
+
+.reader-wrapper.theme-dark {
+  background-color: #0b1120;
+  color: #e2e8f0;
+}
+
+.reader-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Barra Superior de Controles del Lector */
+.reader-toolbar {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-lg);
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 1.15rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.reader-wrapper.theme-dark .reader-toolbar {
+  background-color: #15203b;
+  border-color: rgba(214, 168, 95, 0.28);
+  color: #f8fafc;
+}
+
+@media (min-width: 768px) {
+  .reader-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.reader-book-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reader-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.48rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.reader-back-btn:hover {
+  background-color: var(--color-navy-light);
+}
+
+.reader-head-titles h2 {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.reader-wrapper.theme-dark .reader-head-titles h2 {
+  color: var(--color-cream);
+}
+
+.reader-head-titles p {
+  font-size: 0.78rem;
+  opacity: 0.78;
+}
+
+.reader-controls-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reader-control-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem;
+  gap: 0.2rem;
+}
+
+.reader-wrapper.theme-dark .reader-control-pill {
+  background-color: #0f172a;
+}
+
+.reader-ctrl-btn {
+  padding: 0.36rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: inherit;
+  transition: all var(--transition-fast);
+}
+
+.reader-ctrl-btn:hover,
+.reader-ctrl-btn.active {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.reader-wrapper.theme-dark .reader-ctrl-btn.active {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}
+
+/* Barra de Progreso de Lectura */
+.reader-progress-strip {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1rem;
+  margin-bottom: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.reader-wrapper.theme-dark .reader-progress-strip {
+  background-color: #15203b;
+  border-color: rgba(214, 168, 95, 0.25);
+}
+
+.reader-progress-track {
+  flex: 1;
+  height: 8px;
+  background-color: rgba(100, 116, 139, 0.2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.reader-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-gold) 100%);
+  border-radius: 99px;
+  transition: width var(--transition-base);
+}
+
+.reader-wrapper.theme-dark .reader-progress-bar-fill {
+  background: var(--color-gold);
+}
+
+/* Superficie de Página de Lectura */
+.reader-page-surface {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(23, 37, 84, 0.08);
+  box-shadow: var(--shadow-md);
+  padding: 1.85rem 1.35rem;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+@media (min-width: 768px) {
+  .reader-page-surface {
+    padding: 3rem 3.6rem;
+    min-height: 540px;
+  }
+}
+
+.reader-wrapper.theme-sepia .reader-page-surface {
+  background-color: #fdfaf3;
+  color: #292524;
+  border-color: #e6dec8;
+}
+
+.reader-wrapper.theme-dark .reader-page-surface {
+  background-color: #131c31;
+  color: #e2e8f0;
+  border-color: rgba(214, 168, 95, 0.22);
+}
+
+.reader-chapter-heading {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--color-navy);
+  border-bottom: 2px solid var(--color-gold-soft);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.4rem;
+}
+
+.reader-wrapper.theme-dark .reader-chapter-heading {
+  color: var(--color-gold);
+}
+
+.reader-text-content {
+  font-family: var(--font-reading);
+  line-height: 1.88;
+  letter-spacing: 0.01em;
+}
+
+.reader-text-content p {
+  margin-bottom: 1.15rem;
+  text-align: justify;
+}
+
+.reader-text-content .poem-stanza {
+  margin-bottom: 1.35rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-gold);
+  font-style: italic;
+}
+
+/* Visor PDF Integrado */
+.reader-pdf-frame {
+  width: 100%;
+  height: 560px;
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+}
+
+/* Controles de Paginación Inferior */
+.reader-pagination-bar {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(100, 116, 139, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.reader-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.72rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  transition: all var(--transition-fast);
+}
+
+.reader-nav-btn:hover:not(:disabled) {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.reader-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.reader-wrapper.theme-dark .reader-nav-btn {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}

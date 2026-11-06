@@ -1,0 +1,23 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 440" width="300" height="440">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="440" rx="12" fill="url(#bg)"/>
+  <rect x="16" y="16" width="268" height="408" rx="8" fill="none" stroke="#D6A85F" stroke-width="1.2" stroke-opacity="0.55"/>
+  <rect x="22" y="22" width="256" height="396" rx="6" fill="none" stroke="#D6A85F" stroke-width="0.6" stroke-opacity="0.3"/>
+  <text x="150" y="52" text-anchor="middle" fill="#D6A85F" font-family="system-ui, sans-serif" font-size="9" font-weight="700" letter-spacing="1.6">CUENTOS Â· CLASICOS</text>
+  <line x1="90" y1="64" x2="210" y2="64" stroke="#D6A85F" stroke-width="0.8" stroke-opacity="0.5"/>
+  <g stroke="#D6A85F" stroke-width="1.6" fill="none" opacity="0.85">
+    <circle cx="150" cy="165" r="42"/>
+    <circle cx="150" cy="165" r="32" stroke-dasharray="3 3"/>
+    <path d="M132 175 C140 162, 148 164, 150 168 C152 164, 160 162, 168 175 V152 C160 150, 152 152, 150 156 C148 152, 140 150, 132 152 Z" fill="#D6A85F" fill-opacity="0.18"/>
+  </g>
+  <text x="150" y="258" text-anchor="middle" fill="#FAF7F0" font-family="Georgia, 'Times New Roman', serif" font-size="18.5" font-weight="bold">Cuentos de Amor de Locura y de Muerte</text>
+  <text x="150" y="286" text-anchor="middle" fill="#FAF7F0" fill-opacity="0.78" font-family="Georgia, serif" font-style="italic" font-size="13">Relatos Escogidos</text>
+  <line x1="115" y1="356" x2="185" y2="356" stroke="#D6A85F" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="150" y="382" text-anchor="middle" fill="#D6A85F" font-family="system-ui, sans-serif" font-size="12.5" font-weight="600" letter-spacing="0.8">HORACIO QUIROGA</text>
+  <text x="150" y="404" text-anchor="middle" fill="#FAF7F0" fill-opacity="0.45" font-family="system-ui, sans-serif" font-size="8.5" letter-spacing="2">COLECCION LIBROSFREE</text>
+</svg>
