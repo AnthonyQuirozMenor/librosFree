@@ -132,3 +132,4 @@ export function renderNavbar(activeSection) {
     </nav>
   `;
 }
+

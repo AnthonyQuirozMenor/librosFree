@@ -100,3 +100,4 @@ export const authorsData = [
     availableWorks: ['El Príncipe Feliz']
   }
 ];
+

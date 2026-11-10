@@ -106,3 +106,4 @@ if ($errors.Count -gt 0) {
 } else {
   Write-Output "=== TODAS LAS PRUEBAS PASARON EXITOSAMENTE (0 ERRORES) ==="
 }
+

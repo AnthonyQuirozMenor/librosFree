@@ -1,8 +1,9 @@
-import { isBookFavorite, getBookReadingProgress } from '../utils/storage.js';
+import { isBookFavorite, getBookReadingProgress, getBookQuizResult } from '../utils/storage.js';
 
 export function renderBookCard(book) {
   const isFav = isBookFavorite(book.id);
   const progress = getBookReadingProgress(book.id);
+  const quizResult = getBookQuizResult(book.id);
   const isFullText = book.accessType === 'full';
 
   return `
@@ -62,13 +63,27 @@ export function renderBookCard(book) {
             : ''
         }
 
+        ${
+          quizResult
+            ? `
+          <div style="font-size:0.74rem;font-weight:700;color:var(--color-success);margin-bottom:0.65rem;">
+            ✓ Cuestionario resuelto (${quizResult.score}/${quizResult.total} aciertos)
+          </div>
+        `
+            : ''
+        }
+
         <div class="book-actions">
           <button type="button" class="btn btn-primary btn-sm" data-read-book="${book.id}">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-            </svg>
             <span>Leer libro</span>
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-navy btn-sm"
+            data-quiz-book="${book.id}"
+            title="Responder preguntas de comprensión y reflexión"
+          >
+            <span>Preguntas</span>
           </button>
         </div>
       </div>

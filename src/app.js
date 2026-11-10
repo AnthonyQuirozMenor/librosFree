@@ -10,12 +10,14 @@ import { renderTeamPage } from './pages/TeamPage.js';
 import { renderAboutPage } from './pages/AboutPage.js';
 import { renderContactPage } from './pages/ContactPage.js';
 import { booksData } from './data/books.js';
+import { bookQuizzes } from './data/quizzes.js';
 import {
   toggleBookFavorite,
   getBookReadingProgress,
   getReaderPreferences,
   saveReaderPreferences,
-  toggleBookCompleted
+  toggleBookCompleted,
+  saveBookQuizResult
 } from './utils/storage.js';
 
 const appState = {
@@ -26,7 +28,8 @@ const appState = {
   authorFilter: '',
   activeBookId: 'el-caballero-carmelo',
   currentPageIndex: 0,
-  pdfMode: false
+  pdfMode: false,
+  quizMode: false
 };
 
 function showToast(message) {
@@ -43,7 +46,7 @@ function showToast(message) {
   container.appendChild(item);
   setTimeout(() => {
     item.remove();
-  }, 3000);
+  }, 3200);
 }
 
 function renderViewContent() {
@@ -90,13 +93,14 @@ export function renderApp(options = { scrollTop: true }) {
   }
 }
 
-function openBookInReader(bookId) {
+function openBookInReader(bookId, openQuiz = false) {
   const book = booksData.find((b) => b.id === bookId);
   if (!book) return;
   const saved = getBookReadingProgress(bookId);
   appState.activeBookId = bookId;
   appState.currentPageIndex = saved && saved.currentPage < book.pages.length ? saved.currentPage : 0;
   appState.pdfMode = false;
+  appState.quizMode = openQuiz;
   appState.currentSection = 'lector';
   window.history.replaceState(null, '', `#lector/${bookId}`);
   renderApp({ scrollTop: true });
@@ -178,7 +182,15 @@ function bindInteractiveEvents() {
   document.querySelectorAll('[data-read-book]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const bookId = btn.getAttribute('data-read-book');
-      openBookInReader(bookId);
+      openBookInReader(bookId, false);
+    });
+  });
+
+  // Abrir directamente el Cuestionario y Reflexión de un libro
+  document.querySelectorAll('[data-quiz-book]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const bookId = btn.getAttribute('data-quiz-book');
+      openBookInReader(bookId, true);
     });
   });
 
@@ -263,6 +275,7 @@ function bindInteractiveEvents() {
       const nextPage = parseInt(btn.getAttribute('data-reader-page'), 10);
       if (!Number.isNaN(nextPage)) {
         appState.currentPageIndex = nextPage;
+        appState.quizMode = false;
         renderApp({ scrollTop: true });
       }
     });
@@ -272,6 +285,7 @@ function bindInteractiveEvents() {
   if (readerChapterSelect) {
     readerChapterSelect.addEventListener('change', (e) => {
       appState.currentPageIndex = parseInt(e.target.value, 10) || 0;
+      appState.quizMode = false;
       renderApp({ scrollTop: true });
     });
   }
@@ -297,9 +311,51 @@ function bindInteractiveEvents() {
   document.querySelectorAll('[data-reader-toggle-pdf]').forEach((btn) => {
     btn.addEventListener('click', () => {
       appState.pdfMode = !appState.pdfMode;
+      appState.quizMode = false;
       renderApp({ scrollTop: false });
     });
   });
+
+  document.querySelectorAll('[data-reader-toggle-quiz]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      appState.quizMode = !appState.quizMode;
+      appState.pdfMode = false;
+      renderApp({ scrollTop: true });
+    });
+  });
+
+  // Calificar Cuestionario y Guardar Reflexión
+  const bookQuizForm = document.getElementById('bookQuizForm');
+  if (bookQuizForm) {
+    bookQuizForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const bookId = bookQuizForm.getAttribute('data-quiz-book-id');
+      const quizData = bookQuizzes[bookId];
+      if (!quizData) return;
+
+      const answers = [];
+      let score = 0;
+      quizData.questions.forEach((item, idx) => {
+        const checked = bookQuizForm.querySelector(`input[name="quiz_q_${idx}"]:checked`);
+        const val = checked ? parseInt(checked.value, 10) : -1;
+        answers.push(val);
+        if (val === item.correct) {
+          score += 1;
+        }
+      });
+
+      const reflection = document.getElementById('quizReflectionInput')?.value.trim() || '';
+      saveBookQuizResult(bookId, {
+        answers,
+        score,
+        total: quizData.questions.length,
+        reflection
+      });
+
+      showToast(`✓ Cuestionario calificado (${score}/${quizData.questions.length}) y reflexión guardada`);
+      renderApp({ scrollTop: false });
+    });
+  }
 
   document.querySelectorAll('[data-mark-completed]').forEach((btn) => {
     btn.addEventListener('click', () => {

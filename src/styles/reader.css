@@ -280,3 +280,99 @@
   background-color: var(--color-gold);
   color: var(--color-navy);
 }
+
+/* Cuestionario de Comprensión y Reflexión Lectora */
+.quiz-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.quiz-question-card {
+  background-color: var(--color-cream);
+  border: 1px solid rgba(23, 37, 84, 0.12);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.25rem;
+}
+
+.reader-wrapper.theme-dark .quiz-question-card {
+  background-color: #1e293b;
+  border-color: rgba(214, 168, 95, 0.25);
+}
+
+.quiz-question-title {
+  font-weight: 700;
+  font-size: 0.98rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-navy);
+}
+
+.reader-wrapper.theme-dark .quiz-question-title {
+  color: var(--color-cream);
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.quiz-option-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-gray-border);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.reader-wrapper.theme-dark .quiz-option-label {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+.quiz-option-label:hover {
+  border-color: var(--color-gold);
+}
+
+.quiz-option-label.correct-choice {
+  background-color: #ecfdf5;
+  border-color: #16a34a;
+  color: #14532d;
+  font-weight: 600;
+}
+
+.quiz-option-label.wrong-choice {
+  background-color: #fef2f2;
+  border-color: #dc2626;
+  color: #7f1d1d;
+}
+
+.quiz-explanation {
+  margin-top: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 6px;
+  background-color: rgba(214, 168, 95, 0.16);
+  font-size: 0.83rem;
+  border-left: 3px solid var(--color-gold);
+}
+
+.quiz-score-banner {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #172554 0%, #1e3a8a 100%);
+  color: var(--color-cream);
+  border-left: 4px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+

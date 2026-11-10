@@ -36,3 +36,4 @@ export const teamMembers = [
     photo: './src/assets/images/team-placeholder.svg'
   }
 ];
+

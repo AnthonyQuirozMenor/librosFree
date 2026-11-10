@@ -1,6 +1,7 @@
 const FAVORITES_KEY = 'librosfree_favorites_v1';
 const PROGRESS_KEY = 'librosfree_progress_v1';
 const READER_PREFS_KEY = 'librosfree_reader_prefs_v1';
+const QUIZZES_KEY = 'librosfree_quizzes_v1';
 
 // Gestión de Favoritos
 export function getFavoriteIds() {
@@ -117,3 +118,37 @@ export function saveReaderPreferences(prefs) {
   }
   return updated;
 }
+
+// Gestión de Cuestionarios y Reflexiones Lectoras
+export function getAllQuizResults() {
+  try {
+    const raw = localStorage.getItem(QUIZZES_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+export function getBookQuizResult(bookId) {
+  const all = getAllQuizResults();
+  return all[bookId] || null;
+}
+
+export function saveBookQuizResult(bookId, { answers, score, total, reflection }) {
+  const all = getAllQuizResults();
+  all[bookId] = {
+    bookId,
+    answers,
+    score,
+    total,
+    reflection: reflection || '',
+    completedAt: new Date().toISOString()
+  };
+  try {
+    localStorage.setItem(QUIZZES_KEY, JSON.stringify(all));
+  } catch {
+    // Ignorar error
+  }
+  return all[bookId];
+}
+

@@ -49,3 +49,4 @@ export function renderFooter() {
     </footer>
   `;
 }
+
