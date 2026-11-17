@@ -34,6 +34,12 @@ export const teamMembers = [
     fullName: 'Jhack Zavaleta Leon',
     role: 'Integrante del Proyecto LibrosFree',
     photo: './src/assets/images/team-placeholder.svg'
+  },
+    {
+    id: 'member-6',
+    fullName: 'Marcos Antonio Vilca Quito',
+    role: 'Integrante del Proyecto LibrosFree',
+    photo: './src/assets/images/team-placeholder.svg'
   }
 ];
 
